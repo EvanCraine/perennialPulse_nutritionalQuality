@@ -1,0 +1,275 @@
+"id","description","technique","name","unit_name","nutrient_nbr","rank"
+1001,"AOAC 968.06 + 992.15","Combustion","Solids","G",201,200
+1002,"AOAC 960.39 39.1","Extraction","Nitrogen","G",202,500
+1003,"AOAC 922.06","Acid hydrolysis","Protein","G",203,600
+1004,"AOAC 923.03","Gravimetric","Total lipid (fat)","G",204,800
+1005,"doi.10.1021/jf60175a006","GC","Carbohydrate, by difference","G",205,1110
+1006,"doi.org/10.1093/jat/4.1.43","GC","Fiber, crude (DO NOT USE - Archived)","G",206,999999
+1007,"AOAC 934.06 mod","Vacuum oven","Ash","G",207,1000
+1008,"AOAC 991.43","Enzymatic-gravimetric","Energy","KCAL",208,300
+1009,"AOAC 985.01 + 984.27","ICP","Starch","G",209,2200
+1010,"AOAC 2011.19","ICP-MS","Sucrose","G",210,1600
+1011,"AOAC 942.23 + 953.17 + 957.17","Fluorometric","Glucose","G",211,1700
+1012,"In-house HPLC thiamin","HPLC","Fructose","G",212,1800
+1013,"AOAC 940.33","Microbiological","Lactose","G",213,1900
+1014,"AOAC 944.13 + 960.46 + 985.34","Microbiological","Maltose","G",214,2000
+1015,"AOAC 945.74 + 960.46","Microbiological","Amylose","G",218,999999
+1016,"AOAC 961.15","Microbiological","Amylopectin","G",219,999999
+1017,"AOAC 992.05","Microbiological","Pectin","G",220,999999
+1018,"AOAC 991.20","Kjeldahl","Alcohol, ethyl","G",221,18200
+1019,"AOAC 989.05 mod","Acid hydrolysis","Pentosan","G",222,999999
+1021,"AOAC 963.15","Extraction","Hemicellulose","G",224,999999
+1022,"AOAC 945.46","Gravimetric","Cellulose","G",225,999999
+1023,"AOAC 979.10","Enzymatic-spectrometric","pH","PH",226,999999
+1024,"AOAC 982.14","LC","Specific Gravity","SP_GR",227,999999
+1025,"In-house pH","ISE","Organic acids","G",229,2850
+1026,"AOAC 936.13","Gravimetric","Acetic acid","MG",230,2900
+1027,"AOAC 950.46","Forced air","Aconitic acid","MG",231,3000
+1028,"AOAC 964.22","Vacuum oven","Benzoic acid","MG",232,3100
+1029,"AOAC 980.14","LC","Chelidonic acid","MG",233,3200
+1030,"doi.org/10.1016/S0021-9673(01)95818-2","HPLC","Chlorogenic acid","MG",234,3300
+1032,"doi 10.1039/AN9840900489","HPLC","Citric acid","MG",236,3500
+1033,"AOAC 967.22","Microfluorometric","Fumaric acid","MG",237,3600
+1034,"AOAC 942.23","Fluorometric","Galacturonic acid","MG",238,3700
+1035,"AOAC 970.65","Fluorometric","Gallic acid","MG",239,3800
+1036,"AOAC 944.13","Microbiological","Glycolic acid","MG",240,3900
+1037,"AOAC 945.74","Microbiological","Isocitric acid","MG",241,4000
+1038,"AOAC 961.15","Microbiological","Lactic acid","MG",242,4100
+1039,"AOAC 952.20","Microbiological","Malic acid","MG",243,4200
+1040,"USDA Guidebook 1986","HPLC","Oxaloacetic acid","MG",244,4300
+1041,"AOAC 994.10","GC/Direct saponification","Oxalic acid","MG",245,4400
+1042,"AOAC 996.06","GLC","Phytic acid","MG",246,4500
+1043,"doi.10.1021/ac025624x","LC/ESI/IDMS","Pyruvic acid","MG",247,4600
+1044,"Blauch & Tarka J Food Sci 48 (1983) p745","HPLC","Quinic acid","MG",248,4700
+1045,"Huang et al. JAOAC (2009) p1327","HPLC/MS/MS","Salicylic acid","MG",249,4800
+1046,"AOAC 986.13","HPLC","Succinic acid","MG",250,4900
+1047,"AOAC 996.11","Enzymatic-colorimetric","Tartaric acid","MG",251,5000
+1048,"doi.org/10.1016/S0076-6879(97)82128-3","HPLC","Ursolic acid","MG",252,5100
+1049,"doi.org/10.1016/S0889-1575(03)00029-2","HPLC","Solids, non-fat","G",253,999999
+1050,"In-house HPLC retinol","HPLC","Carbohydrate, by summation","G",205.2,1120
+1051,"doi.org/10.1002/0471142913.faf0203s00","HPLC","Water","G",255,100
+1052,"In-house HPLC tocopherols","HPLC","Adjusted Nitrogen","G",256,999999
+1053,"AOAC 954.02","Acid hydrolysis","Adjusted Protein","G",257,700
+1055,"doi.org/10.1111/j.1745-4522.2005.00011.x","GC","Mannitol","G",260,2500
+1056,"doi.10.1021/jf049398z","HPLC","Sorbitol","G",261,2600
+1057,"doi.org/10.1007/s11746-997-0158-1","Extraction","Caffeine","MG",262,18300
+1058,"AOAC 925.09 + 926.08","Vacuum oven","Theobromine","MG",263,18400
+1059,"AOAC 926.08","Vacuum oven","Nitrates","MG",264,999999
+1060,"AOAC 982.14 mod","HPLC","Nitrites","MG",265,999999
+1061,"doi.10.1021/jf051505h","GC","Nitrosamine,total","MG",266,999999
+1062,"AOAC 2002.02","Enzymatic-gravimetric","Energy","kJ",268,400
+1063,"AOAC 2011.25","Enzymatic-Gravimetric-LC","Sugars, Total NLEA","G",269.3,1500
+1064,"AOAC 2009.01","Enzymatic-Gravimetric-LC","Solids, soluble","G",271,999999
+1065,"AOAC 984.27","ICP","Glycogen","G",272,999999
+1066,"AOAC 982.14 mod","HPLC","Fiber, neutral detergent (DO NOT USE - Archived)","G",273,999999
+1067,"AOAC 2011.25","Enzymatic-gravimetric-LC","Reducing sugars","G",274,999999
+1068,"AOAC 925.09","Vacuum oven","Beta-glucans","G",276,999999
+1069,"AOAC 942.05","Gravimetric","Oligosaccharides","G",281,999999
+1070,"AOAC 990.03","Combustion","Nonstarch polysaccharides","G",282,999999
+1071,"AOAC 2012.15","ICP-MS","Resistant starch","G",283,999999
+1072,"Mann et al. JAOAC (2005) p30","LC","Carbohydrate, other","G",284,NA
+1073,"doi.org/10.1016/j.jfca.2008.02.001","GC/Direct saponification","Arabinose","G",285,999999
+1074,"Morrison et al., J Lipid Res, 5 (1964)","GLC","Xylose","G",286,999999
+1075,"Parks & Goins, J. Food Sci. (1994)59, p1262","GLC","Galactose","G",287,2100
+1076,"AOAC 985.35","AAS","Raffinose","G",288,2300
+1077,"AOAC 985.35 + 990.23","Emission spectrometry","Stachyose","G",289,2400
+1078,"AOAC 13th Ed. 2.019, 2.095, 7.098","Colorimetric","Xylitol","G",290,2700
+1079,"doi.org/10.1007/s12161-010-9123-y","GLC","Fiber, total dietary","G",291,1200
+1080,"AOAC 952.20","Microbiological","Lignin","G",292,999999
+1081,"Folch et al. J Bio Chem 1957","Extraction","Ribose","G",294,999999
+1082,"AOAC 992.15 (39.1.16)","Combustion","Fiber, soluble","G",295,1240
+1083,"AOAC 950.46 +934.06","Forced air","Theophylline","MG",296,999999
+1084,"AOAC 920.15","Gravimetric","Fiber, insoluble","G",297,1260
+1085,"AOAC 992.05","Microbiological","Total fat (NLEA)","G",298,900
+1086,"AOAC 933.08","GC/Direct saponification","Total sugar alcohols","G",299,999999
+1087,"AOAC 941.15","HPLC","Calcium, Ca","MG",301,5300
+1088,"AOAC 945.74 B5","Microbiological","Chlorine, Cl","MG",302,999999
+1089,"AOAC 948.22","Gravimetric","Iron, Fe","MG",303,5400
+1090,"AOAC 963.15","Extraction","Magnesium, Mg","MG",304,5500
+1091,"AOAC 968.06","Combustion","Phosphorus, P","MG",305,5600
+1092,"AOAC 982.30 HCl","Acid Hydrolysis-HPLC","Potassium, K","MG",306,5700
+1093,"AOAC 983.13","GC","Sodium, Na","MG",307,5800
+1094,"AOAC 985.29","Enzymatic/gravimetric","Sulfur, S","MG",308,6241
+1095,"AOAC 985.35","AAS","Zinc, Zn","MG",309,5900
+1096,"AOAC 989.05 + 932.06","Base hydrolysis","Chromium, Cr","UG",310,999999
+1097,"AOAC 990.26","Colorimetric","Cobalt, Co","UG",311,6244
+1098,"doi.10.1021/jf301374t","HPLC","Copper, Cu","MG",312,6000
+1099,"AOAC 933.05","Extraction","Fluoride, F","UG",313,6240
+1100,"AOAC 934.06","Pressure drying","Iodine, I","UG",314,6150
+1101,"AOAC 992.05 + 960.46b","Microbiological","Manganese, Mn","MG",315,6100
+1102,"In-house HPLC Vit D","HPLC","Molybdenum, Mo","UG",316,6243
+1103,"doi.org/10.1016/j.jfca.2005.07.001","Tri-enzyme Extraction","Selenium, Se","UG",317,6200
+1104,"EN 14164:2008","HPLC-fluorimetric","Vitamin A, IU","IU",318,7500
+1105,"Fecher et al., J Anal At Spectro (1998) mod","ICP","Retinol","UG",319,7430
+1106,"doi.org/10.1111/j.1365-2141.1974.tb06816.x","Radio-Dilution","Vitamin A, RAE","UG",320,7420
+1107,"In-house Vit D HPLC","HPLC","Carotene, beta","UG",321,7440
+1108,"In-house Vit D HPLC","HPLC","Carotene, alpha","UG",322,7450
+1109,"doi.org/10.1016/j.jfca.2013.04.003","ICP","Vitamin E (alpha-tocopherol)","MG",323,7905
+1110,"doi.org/10.1093/jn/130.10.2568","GLC","Vitamin D (D2 + D3), International Units","IU",324,8650
+1111,"doi.org/10.1016/j.foodchem.2009.07.058","GLC","Vitamin D2 (ergocalciferol)","UG",325,8710
+1112,"Starch_polarimetric","Polarimetric","Vitamin D3 (cholecalciferol)","UG",326,8720
+1113,"Moisture_KarlFischer","Titrimetric","25-hydroxycholecalciferol","UG",327,8730
+1114,"AACC 08-01","Gravimetric","Vitamin D (D2 + D3)","UG",328,8700
+1115,"AACC 46-30","Combustion","25-hydroxyergocalciferol","UG",329,8740
+1116,"AOAC 934.01","Vacuum oven","Phytoene","UG",330,7570
+1117,"AOAC 971.30","HPLC","Phytofluene","UG",331,7580
+1118,"AOAC 974.29 Mod","HPLC","Carotene, gamma","UG",332,7455
+1119,"AOAC 974.29","Colorimetric","Zeaxanthin","UG",338.2,7564
+1120,"AOAC 985.35 50.1","AAS","Cryptoxanthin, beta","UG",334,7460
+1121,"AOAC 988.15","Alk. hydrolysis-HPLC","Lutein","UG",338.1,7562
+1122,"AOAC 992.15","Combustion","Lycopene","UG",337,7530
+1123,"AOAC 992.23","Combustion","Lutein + zeaxanthin","UG",338,7560
+1124,"AOAC 990.03 2","Combustion","Vitamin E (label entry primarily)","IU",340,999999
+1125,"AOAC 944.13","Microbiological","Tocopherol, beta","MG",341,8000
+1126,"AOAC 974.29 mod","HPLC","Tocopherol, gamma","MG",342,8100
+1127,"AOAC 982.30","Alk. hydrolysis-HPLC","Tocopherol, delta","MG",343,8200
+1128,"AOAC 982.30","HCl hydrolysis -HPLC","Tocotrienol, alpha","MG",344,8300
+1129,"AOAC 996.06","GLC","Tocotrienol, beta","MG",345,8400
+1130,"doi.10.1021/jf00120a045","GC","Tocotrienol, gamma","MG",346,8500
+1131,"Davidek et al. J Micro Anal 1985 p39","HPLC","Tocotrienol, delta","MG",347,8600
+1132,"EN 14122:2003","HPLC","Aluminum, Al","UG",348,999999
+1133,"EN 15652:2009","HPLC-fluorimetric","Antimony, Sb","UG",349,999999
+1134,"AOAC 992.26 + 2002.05","HPLC","Arsenic, As","UG",350,999999
+1135,"Fecher et al., J Anal At Spectro (1998)","ICP","Barium, Ba","UG",351,999999
+1136,"doi.10.1021/jf960497p_mod","Single Enzyme","Beryllium, Be","UG",352,999999
+1137,"doi.10.1021/jf9029546","HPLC","Boron, B","UG",354,6245
+1138,"FSIS_hydroyproline","HPLC","Bromine, Br","UG",355,999999
+1139,"Ash_gravimetric","Gravimetric","Cadmium, Cd","UG",356,999999
+1140,"Niacin_SIDMS","HPLC-SIDMS","Gold, Au","UG",363,999999
+1141,"AOAC 2002.05","HPLC-UV","Iron, heme","MG",364,999999
+1142,"AACC 44-15A","Oven","Iron, non-heme","MG",365,999999
+1143,"AOAC 923.03","Gravimetric","Lead, Pb","UG",367,999999
+1144,"AOAC 933.05","Extraction","Lithium, Li","UG",368,999999
+1145,"AOAC 982.30 Ninhy","Acid Hydrolysis-HPLC","Mercury, Hg","UG",370,999999
+1146,"AOAC 983.23","Extraction","Nickel, Ni","UG",371,6242
+1147,"AOAC 989.05","Extraction","Rubidium, Rb","UG",373,999999
+1148,"AOAC 990.03","Combustion","Fluoride - DO NOT USE; use 313","UG",374,6250
+1149,"AOAC 994.12 HCl","Acid hydrolysis-HPLC","Salt, NaCl","MG",375,999999
+1150,"AOCS Ce1-62 2-66","GLC","Silicon, Si","UG",378,999999
+1151,"AOCS Ce1c-89","GLC","Silver, Ag","UG",379,999999
+1152,"doi.org/10.1016/0003-2697(89)90059-6","Acid hydrolysis-HPLC","Strontium, Sr","UG",380,999999
+1153,"AOAC 967.22","Microfluorometric","Tin, Sn","UG",385,999999
+1154,"AOAC 982.29","LC","Titanium, Ti","UG",386,999999
+1155,"EN 14152:2003","HPLC-fluorimetric","Vanadium, V","UG",389,999999
+1156,"Carot_HPLC_rev_phase","HPLC","Vitamin A, RE","MCG_RE",392,7500
+1157,"In-house Vit D RIA","RIA","Carotene","MCG_RE",393,7600
+1158,"doi.org/10.1016/j.foodres.2012.11.025","Enzymatic-spectrometric","Vitamin E","MG_ATE",394,7800
+1159,"doi.org/10.1006/jfca.1999.0845","HPLC","cis-beta-Carotene","UG",321.1,7442
+1160,"Martin et al., JAOAC 73 (1990)","Tri-enzyme Extraction","cis-Lycopene","UG",337.1,7532
+1161,"doi.10.1021/ac00237a004","ID-GC-MS","cis-Lutein/Zeaxanthin","UG",338.3,7561
+1162,"doi.10.1021/jf00084a019","GLC","Vitamin C, total ascorbic acid","MG",401,6300
+1163,"AOAC 925.09","Vacuum oven","Vitamin C, reduced ascorbic acid","MG",402,999999
+1164,"AOAC 925.40","Oven","Vitamin C, dehydro ascorbic acid","MG",403,999999
+1165,"AOAC 961.15","Microbiological","Thiamin","MG",404,6400
+1166,"AOAC 982.30 Perf","Performic oxidation-HPLC","Riboflavin","MG",405,6500
+1167,"AOAC 984.27","ICP","Niacin","MG",406,6600
+1168,"AOAC 985.01","ICP","Niacin from tryptophan, determined","MG",407,999999
+1169,"AOAC 986.15 1","Hydride generation","Niacin equivalent N406 +N407","MG",409,999999
+1170,"AOAC 991.43 3","Enzymatic/chemical","Pantothenic acid","MG",410,6700
+1171,"AOAC 994.12 Perf","Performic oxidation-HPLC","Vitamin B-6, pyridoxine, alcohol form","MG",411,999999
+1172,"AOAC 996.06","Hydrolytic extraction/GC","Vitamin B-6, pyridoxal, aldehyde form","MG",412,999999
+1173,"doi.org/10.1016/j.chroma.2006.01.049","GLC","Vitamin B-6, pyridoxamine, amine form","MG",413,999999
+1174,"AOAC Olestra","GC","Vitamin B-6, N411 + N412 +N413","MG",414,999999
+1175,"AOCS Ce1d-91","GLC","Vitamin B-6","MG",415,6800
+1176,"AOAC 968.08 + 985.35 + 965.05","AAS","Biotin","UG",416,6850
+1177,"AOAC 994.10","GC/Direct saponification","Folate, total","UG",417,6900
+1178,"doi.10.1021/jf0259056","Tri-enzyme /LC-MS","Vitamin B-12","UG",418,7300
+1179,"Hill et al. Anal. Chem. (1986) 58","AAS","Folate, free","UG",419,999999
+1180,"Moisture_air 100C","Lyophilization","Choline, total","MG",421,7220
+1181,"doi.org/10.1016/j.foodchem.2004.08.007","Tri-enzyme Extraction","Inositol","MG",422,2800
+1182,"doi.10.1021/jf102150n","GC","Inositol phosphate","MG",423,999999
+1183,"Sullivan & Zywicki, J. AOAC (2012)","ICP-MS","Vitamin K (Menaquinone-4)","UG",428,8950
+1184,"doi.10.1021/jf802307h","Hydride generation","Vitamin K (Dihydrophylloquinone)","UG",429,8900
+1185,"AOAC 900.02","Gravimetric","Vitamin K (phylloquinone)","UG",430,8800
+1186,"AOAC 920.15","Gravimetric","Folic acid","UG",431,7000
+1187,"AOAC 920.39","Extraction","Folate, food","UG",432,7100
+1188,"AOAC 920.50","Gravimetric","5-methyl tetrahydrofolate (5-MTHF)","UG",433,999999
+1189,"AOAC 985.32","Microbiological","Folate, not 5-MTHF","UG",434,999999
+1190,"AOAC 950.46b","Vacuum oven","Folate, DFE","UG",435,7200
+1191,"AOAC 960.46","Microbiological","10-Formyl folic acid (10HCOFA)","UG",436,999999
+1192,"AOAC 961.14","Colorimetric","5-Formyltetrahydrofolic acid (5-HCOH4","UG",437,999999
+1193,"AOAC 986.15","Hydride generation","Tetrahydrofolic acid (THF)","UG",438,999999
+1194,"AOAC 990.23","Emission spectrometry","Choline, free","MG",450,7230
+1195,"AOAC 991.43 2","Enzymatic-gravimetric","Choline, from phosphocholine","MG",451,7240
+1196,"AOAC 991.43 4","Enzymatic-gravimetric","Choline, from phosphotidyl choline","MG",452,7250
+1197,"AOAC 992.07","Microbiological","Choline, from glycerophosphocholine","MG",453,7260
+1198,"AOAC 994.12 HPLC","HPLC","Betaine","MG",454,7290
+1199,"AOAC 995.05","LC","Choline, from sphingomyelin","MG",455,7270
+1200,"Baker et al., At Spect 20 (1999)","ICP-MS","p-Hydroxy benzoic acid","MG",460,999999
+1201,"Beckman_AA","Acid hydrolysis/IC","Caffeic acid","MG",461,999999
+1202,"Moisture_air","Forced air","p-Coumaric acid","MG",462,999999
+1203,"B_Glucan_Megazyme","Enzymatic-spectrophotometric","Ellagic acid","MG",463,999999
+1204,"Choles_GC/Direct","GC/Direct saponification","Ferrulic acid","MG",464,999999
+1205,"AOAC 43.283 - 43.291","GC","Gentisic acid","MG",465,999999
+1206,"SpGrav_gravimetric","Gravimetric","Tyrosol","MG",466,999999
+1207,"AOAC 985.01 + 984.27","ICP","Vanillic acid","MG",467,999999
+1208,"AOAC 942.23","Fluorometric","Phenolic acids, total","MG",469,999999
+1209,"AOAC 944.13 B5","Microbiological","Polyphenols, total","MG",470,999999
+1210,"AOAC 944.13 B2","Microbiological","Tryptophan","G",501,16300
+1211,"AOAC 960.47","Microbiological","Threonine","G",502,16400
+1212,"AOAC 975.03 3.2","AAS","Isoleucine","G",503,16500
+1213,"AOAC 991.42","Enzymatic-gravimetric","Leucine","G",504,16600
+1214,"AOAC 993.19","Enzymatic-gravimetric","Lysine","G",505,16700
+1215,"Bui and Cooper, J. AOAC, 70 (1987)","HPLC","Methionine","G",506,16800
+1216,"Carpenter et al., Biochem J. 1960, p. 604","Chemical","Cystine","G",507,16900
+1217,"AOCS Ce1-62","GLC","Phenylalanine","G",508,17000
+1218,"AOAC 925.45","Vacuum oven","Tyrosine","G",509,17100
+1219,"AOAC 958.01 + 965.17","Spectrophotometric","Valine","G",510,17200
+1220,"AOAC 980.13 + 982.14 + 984.17","LC","Arginine","G",511,17300
+1221,"AOAC 985.35 + 975.03","AAS","Histidine","G",512,17400
+1222,"Carot_FCL_HPLC","HPLC","Alanine","G",513,17500
+1223,"Hill et al. Anal. Chem. (1986) 58","AES","Aspartic acid","G",514,17600
+1224,"Tryptophan_USDA","Chemical","Glutamic acid","G",515,17700
+1225,"doi.10.1021/jf60175a006","GC","Glycine","G",516,17800
+1226,"AOAC 961.15 + 960.46","Microbiological","Proline","G",517,17900
+1227,"SpGrav_pyncnometer","Pycnometer","Serine","G",518,18000
+1228,"doi.org/10.1080/10826079808006596","HPLC","Hydroxyproline","G",521,18100
+1229,"AOAC 955.04 N","Kjeldahl","Cysteine and methionine(sulfer containig AA)","G",522,999999
+1230,"AOAC 966.11","Enzymatic-spectrometric","Phenylalanine and tyrosine (aromatic  AA)","G",523,16950
+1231,"AOAC 975.03","AAS","Asparagine","G",525,999999
+1232,"AOAC 981.10 39.1","Kjeldahl","Cysteine","G",526,18150
+1233,"AOCS Ce-1e-91(01)","GLC","Glutamine","G",528,999999
+1234,"AOAC 994.10 mod","GC/Direct saponification","Taurine","G",529,999999
+1235,"doi.org/10.1016/0308-8146(95)00149-2","HPLC","Sugars, added","G",539,1540
+1236,"doi.org/10.1016/S0308-8146(98)00182-4","HPLC","Sugars, intrinsic","G",549,1520
+1237,"Hurst et al., J. AOAC, 67 (1984)","HPLC","Calcium, added","MG",551,5340
+1238,"doi.10.1021/jf960497p","Tri-enzyme Extraction","Iron, added","MG",553,5440
+1239,"doi.10.1021/jf950616l","ICP","Calcium, intrinsic","MG",561,5320
+1240,"VanWinkle et al., Pediatr. Dent., 17 (1995)","ISE-MD-HMDS","Iron, intrinsic","MG",563,5420
+1241,"AACC 76-11","Enzymatic-colorimetric","Vitamin C, added","MG",571,6340
+1242,"AOAC 925.51","Gravimetric","Vitamin E, added","MG",573,7920
+1243,"AOAC 930.15","Oven","Thiamin, added","MG",574,6440
+1244,"AOAC 940.33","Microbiological","Riboflavin, added","MG",575,6540
+1245,"AOAC 950.46","Vacuum oven","Niacin, added","MG",576,6640
+1246,"AOAC 967.21","Titrimetric","Vitamin B-12, added","UG",578,7340
+1247,"AOAC 970.65","Fluorometric","Vitamin C, intrinsic","MG",581,6320
+1248,"AOAC 982.29","LC","Vitamin E, intrinsic","MG",583,7930
+1249,"AOAC 985.32","Microbiological","Thiamin, intrinsic","MG",584,6420
+1250,"AOAC 991.43 1","Enzymatic/gravimetric","Riboflavin, intrinsic","MG",585,6520
+1251,"AOCS Am 3 -96","Extraction","Niacin, intrinsic","MG",586,6620
+1252,"AOAC 944.13 + 960.46 + 985.34","Microbiological","Vitamin B-12, intrinsic","UG",588,7320
+1253,"AOAC 982.30","Acid hydrolysis/ Performic acid","Cholesterol","MG",601,15700
+1254,"AOAC 992.07","Microbiological","Glycerides","G",602,999999
+1255,"FDA Meth #2, 1975","GLC","Phospholipids","G",603,999999
+1256,"Moisture_air 60C","Oven","Glycolipids","G",604,999999
+1257,"Sawar, et. al., JAOAC 1988","HPLC","Fatty acids, total trans","G",605,15400
+1258,"Se_GFAAS","AAS","Fatty acids, total saturated","G",606,9700
+1259,"Fluoride_ISE","ISE-direct","SFA 4:0","G",607,9800
+1260,"J Ag Food Chem, 23: 1157 & other Pubs","Microbiological","SFA 6:0","G",608,9900
+1261,"AOAC 994.10 mod","GC/Direct sponification","SFA 8:0","G",609,10000
+1262,"doi.org/10.3402/fnr.v56i0.18931","GC","SFA 10:0","G",610,10100
+1263,"AOAC 2009.01 + 2011.25","LC","SFA 12:0","G",611,10300
+1264,"AOAC 971.30 with HPLC quantification mod","LC-FLD ()","SFA 14:0","G",612,10500
+1265,"AOAC 971.30 with HPLC quantification mod","LC-FLD ()","SFA 16:0","G",613,10700
+1266,"doi.org/10.1002/jps.2600560249","Nephelometry","SFA 18:0","G",614,10900
+1267,"In-house HPLC retinol","HPLC","SFA 20:0","G",615,11100
+1268,"doi.org/10.1002/0471142913.faf0203s00","HPLC","MUFA 18:1","G",617,12100
+1269,"AOAC 934.06 mod","Vacuum oven","PUFA 18:2","G",618,13100
+1270,"AOAC 900.02","Gravimetric","PUFA 18:3","G",619,13900
+1271,"Publication forthcoming - validation data sent to MAFCL","Direct alkaline saponification, SPE clean up, HPLC-UV","PUFA 20:4","G",620,14700
+1272,"AOAC 2001.10","HPLC","PUFA 22:6 n-3 (DHA)","G",621,15300
+1273,"P-143 Ergothioneine by HPLC","reverse-phase HPLC","SFA 22:0","G",624,11200
+1274,"Phyto- & Fungisterols","Direct alkaline saponification, BSTFA/TMCS derivatization; GC-FID","MUFA 14:1","G",625,11500
+1275,"HPAE-PAD"," High-Performance Anion-Exchange Chromatography with Pulsed Amperometric Detection","MUFA 16:1","G",626,11700
+1276,"Mushroom and Yeast Beta-Glucan assay","UV-VIS","PUFA 18:4","G",627,14250
+1277,"Cereal grains, milling fractions, and wort beer Beta-Glucan assay","UV-VIS","MUFA 20:1","G",628,12400
