@@ -5,10 +5,10 @@ author: "Evan B. Craine^1^\\*, Muhammet Şakiroğlu^2^, Tessa E. Peters^1^, Spen
 date: "^1^The Land Institute, Salina, KS, US ^2^Adana Alparslan Türkeş Science and Technology University, Adana, TR"
 output:
   word_document:
-    reference_docx: StylesTemplate.docx # This you would need to create with the formatting of your choice.
+    reference_docx: StylesTemplate_git.docx # This you would need to create with the formatting of your choice.
 keywords: Sainfoin, Perennial, Pulse, Plant-protein, Human Nutrition, Sustainability
-bibliography: ./sainfoin_A_moreSamples.json # This file you create from your reference manager of choice
-csl: ./apa-6th-edition.csl # This can be changed to your citation style of choice; query here https://www.zotero.org/styles
+bibliography: ./sainfoin_A_moreSamples_git.json # This file you create from your reference manager of choice
+csl: ./apa-6th-edition_git.csl # This can be changed to your citation style of choice; query here https://www.zotero.org/styles
 abstract: |
   *Onobrychis viciifolia* (hereafter sainfoin) is an autotetraploid (2*n*=4*x*=28) insect-pollinated perennial legume originating from the Caucasus that has historically been cultivated as a forage. As a temperate perennial legume, sainfoin has the potential to improve the sustainability of agroecosystems by fixing nitrogen, reducing soil erosion, and providing resources for pollinators and wildlife. Using seeds from commercial sainfoin varieties developed for forage production, grown by commercial sainfoin seed growers in the western United States, this study evaluates seed composition as part of an ongoing investigation into sainfoin's potential as a novel grain legume. We found crude protein content (38.78%) comparable to soybean and lupine, fat content (6.96%) comparable to luine and chickpea, and starch (7.1%) and dietary fiber content (48.96%) comparable to lupine. Phytic acid content was higher than pulses (1790.89 mg). Ash (3.81%), iron (64.14 ppm), and zinc content (61.63 ppm) was in the higher end of the range for pulses. We infer relationships within and among the components and samples using correlation and principal component analyses. This study indicates that sainfoin could become a novel, nutrient-dense crop for human nutrition. Future studies are required to further characterize seed composition, safety, and demonstrate how common legume processing tenchiques may influence nutritional quality.   
     
