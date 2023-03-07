@@ -1,0 +1,661 @@
+---
+title: |
+  **Nutritional Quality of *Onobrychis viciifolia* (Scop.) Seeds: a Potentially Novel Perennial Pulse Crop for Human Use**
+author: "Evan B. Craine^1^\\*, Muhammet Şakiroğlu^2^, Tessa E. Peters^1^, Spencer Barriball^1^, Brandon Schlautman^1^"
+date: "^1^The Land Institute, Salina, KS, US ^2^Adana Alparslan Türkeş Science and Technology University, Adana, TR"
+output:
+  word_document:
+    reference_docx: StylesTemplate.docx # This you would need to create with the formatting of your choice.
+keywords: Sainfoin, Perennial, Pulse, Plant-protein, Human Nutrition, Sustainability
+bibliography: ./sainfoin_A_moreSamples.json # This file you create from your reference manager of choice
+csl: ./apa-6th-edition.csl # This can be changed to your citation style of choice; query here https://www.zotero.org/styles
+abstract: |
+  *Onobrychis viciifolia* (hereafter sainfoin) is an autotetraploid (2*n*=4*x*=28) insect-pollinated perennial legume originating from the Caucasus that has historically been cultivated as a forage. As a temperate perennial legume, sainfoin has the potential to improve the sustainability of agroecosystems by fixing nitrogen, reducing soil erosion, and providing resources for pollinators and wildlife. Using seeds from commercial sainfoin varieties developed for forage production, grown by commercial sainfoin seed growers in the western United States, this study evaluates seed composition as part of an ongoing investigation into sainfoin's potential as a novel grain legume. We found crude protein content (38.78%) comparable to soybean and lupine, fat content (6.96%) comparable to luine and chickpea, and starch (7.1%) and dietary fiber content (48.96%) comparable to lupine. Phytic acid content was higher than pulses (1790.89 mg). Ash (3.81%), iron (64.14 ppm), and zinc content (61.63 ppm) was in the higher end of the range for pulses. We infer relationships within and among the components and samples using correlation and principal component analyses. This study indicates that sainfoin could become a novel, nutrient-dense crop for human nutrition. Future studies are required to further characterize seed composition, safety, and demonstrate how common legume processing tenchiques may influence nutritional quality.   
+    
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+rm(list=ls())
+
+Sys.setenv(TZ = "US/Pacific")
+
+library(knitr)
+
+library(rmarkdown)
+
+library(flextable)
+# flextable resources
+## https://mran.microsoft.com/snapshot/2018-06-24/web/packages/flextable/vignettes/overview.html
+## https://davidgohel.github.io/flextable/
+
+library(dplyr)
+
+library(tidyr)
+
+library(rbbt)
+# more infor here: https://dewey.dunnington.ca/post/2020/getting-started-zotero-better-bibtex-rmarkdown/
+
+# set flex table defaults
+set_flextable_defaults(
+  font.family = "Arial", 
+  font.size = 10,
+  table.layout = 'autofit',
+  theme_fun = theme_vanilla)
+```
+# Introduction
+*Onobrychis viciifolia* (hereafter sainfoin) is an autotetraploid (2*n* = 4*x* = 28) [@frame_etal98], allogamous, insect-pollinated perennial legume originating from south central Asia [@carbonero_etal11]. Sainfoin has been widely cultivated in Europe, Asia, and in certain parts of North America, demonstrating its adaptability to diverse environmental conditions [@frame_etal98]. Sainfoin has been historically cultivated as a perennial forage legume. It has several distinct benefits as a forage, including reduced risk of bloat increased protein digestibility, and reduced methane production, which are attributed to a unique content and composition of condensed tannins in the foliage [@berard_etal09; @mcmahon_etal00; @mueller-harvey06; @waghorn_mcnabb03; @wang_etal06; @wang_etal15]. For instance, English covenants from the 1800s held by Cotswold Seeds Ltd document that farmers were required to grow sainfoin to maintain soil fertility, which provides evidence for the integral role of sainfoin in sustainable cropping systems as a source of biologically fixed nitrogen [@carbonero_etal11]. With the increased availability of synthetic nitrogen, and consequential decoupling of on-farm nitrogen cycling among legumes, other row crops, and livestock, sainfoin acreage decreased. As a result, sainfoin has been neglected and underutilized. A small portfolio of improved varieties exist, genetic resources are limited, and the potential of sainfoin is largely unknown [@carbonero_etal11]. Perennial wild plants and crops, such as sainfoin, have numerous environmental and ecosystem benefits, including improved soil health, reduced erosion and nitrogen runoff, and improved habitat for pollinators and other wildlife [@cox_etal04; @cox_etal06; @glover_etal10]. Sainfoin is an excellent pollinator resource, providing both pollen and nectar, and honeybees can produce an abundance of high quality honey when managed properly on sainfoin fields [@kells01]. For these reasons, and in addition to others, The Land Institute (Salina, KS, US) is relying on natural systems to inform the development of perennial crop polycultures [@cox_etal06; @jackson02]. 
+
+Legumes have a long history as a foundation component of crop and food systems across cultures worldwide [@ferreira_etal21]. Of the seven Neolithic founder crops, four were legumes (lentil, pea, bitter vetch, and chickpea) [@lev-yadun_etal00]. The Food and Agriculture Organization (FAO) of the United Nations defines grain legumes as pulses and their importance was recognized during the International Year of Pulses in 2016. The most common categories of pulses, arising from substantial agricultural and economic importance, are dry beans (*Phaseolus* L), chickpeas (*Cicer arietinum*), dry peas (*Pisum sativum*), and lentils (*Lens culinaris*) [@altobelli_etal16].  In addition to these major pulse crops, there are many legume species that hold considerable importance as food and fodder for humans and animals as part of crop and food systems. However, most of these legume species are not well known outside of their primary production regions, where genetic diversity is maintained and improved through farmer-maintained landraces [@aliyu_etal14; @mayes_etal12]. This leads to neglected and underutilized, or orphan status, in spite of adaptability to specific, often challenging, agroecological conditions and the ability to provide nutritional security [@mohanty_etal20; @nayak_etal22; @prakashabhishekniranjans_k_te01; @rathi_etal21]. In cropping systems, legumes provide a biological source of nitrogen by "fixing" atmospheric nitrogen into ammonia via symbiosis with rhizobium in root nodules [@vitousek_etal02a]. This is essential to legume growth and reproduction, contributes to the nitrogen requirements of subsequent crops in cropping system rotations, and legumes are ultimately linked to providing almost the entire amount of nitrogen that livestock and humans must obtain from diets [@herridge_etal08; @peoples_etal09]. In addition to benefiting cereal grains in cropping systems, pulses also complement cereal grains in food systems and human diets [@mcdermott_wyatt17]. For example, pulses and cereal grains have complementary amino acids profiles; amino acids which cereal grains typically lack are provided by legumes in sufficient quantities and vice versa [@anitha_etal20; @erbersdobler_etal17]. This is also evidenced by the FAO recommendation of consuming cereal grains to pulses in a ratio of 2:1 (food servings) @bressani83. Although pulses may lower fat content compared to other legumes, such as soy beans, the composition of fats in pulses do provide beneficial amounts of essential fatty acids, a favorable ratio of omega 3 to omega 6 fatty acids, and a balanced profile unsaturated to saturated fatty acids [@khrisanapant_etal19; @margier_etal18; @padhi_etal17; @singh17]. Pulses are also an important source of vitamins and minerals, such as iron, zinc, and folate [@jha_warkentin20; @singh17]. While pulses are a valuable source of protein and minerals, certain bioactive components can reduce protein digestibility and mineral utilization [@chitra_etal95; @sa_etal20]. However, the content and activity of these components can vary considerable among pulses. Often referred to as "antinutritional" factors, this term is arguably a misnomer. Arising in part from studies of these compounds in isolation and their health effects, the term ignores their complicated and nuanced role in human health when they occur in combination in a whole food or as part of the diet with other foods [@gautam_etal20; @gibson_etal18; @petroski_minich20]. Therefore, we use the term bioactive compounds instead of antinutrients when referring to such compounds (e.g. tannins, phytic acid). Given the fundamental role of pulses in crop and food systems, pulse crops are a main focus of biofortification efforts [@jha_warkentin20; @kumar_pandey20]. Biofortification is the process of integrating nutrients into food crops [@shivay_etal]. As a sustainable and affordable staple food, especially in low-input production systems and low-income rural households, pulse consumption can prevent malnutrition and disease and improve human health [@bouis_saltzman17]. 
+
+Agriculture has to simultaneously meet three interconnected challenges facing the global population: improve food security through availability, access, and utilization; adapt to climate change and natural resource pressures; and, mitigate the effects of climate change [@fao17a]. Meeting these challenges becomes especially improbable in the context of poverty, lack of access to food, and an increased preference for processed foods and animal proteins that divert cereal crops from food to feed [@crist_etal17; @ctx1018636178740001842]. Approximately 29% of the global population is food insecure and 9.8% suffers from undernourishment (i.e. hunger) [@foodandagricultureorganizationoftheunitednations_etal22]. Paradoxically, obesity has tripled worldwide since 1975, and the prevalence of diabetes is expected to increase to 10.2% in 2030 from an estimated 9.3% in 2019 [@hariharan_etal22]. An unhealthy diet is largely contributing to higher incidence of obesity and an increased risk of diabetes, cardiovascular disease, and chronic inflammation, especially often in developed countries with high Socio-demographic Index (SDI)s [@hariharan_etal22; @lopez_murray98; @murray_etal20]. The challenge is to diversify diets and provide affordable, nutritionally dense foods that are attractive to consumers for their flavor, culturally relevant applications, and health benefits, with the goal of altering dietary patterns that contribute to undernourishment, nutritional deficiencies, and diseases associated with excessive food intake [@aleksandrowicz_etal16; @beal_etal17; @bruins_etal18; @springmann_etal16]. Due to the nutritional quality of pulses, characterized by high protein content, low caloric density, high proportion of slowly digested carbohydrates, high dietary fiber content, and appreciable vitamin and mineral content, there are a plethora of health benefits and diseases that pulse consumption can prevent against. These include all-cause mortality, diabetes, heart disease, numerous forms of cancer, and obesity [@didinger_etal22; @didinger_thompson; @park_etal11]. Reduced disease risk and prevention is directly attributed to the high-fiber profile of pulses in particular [@chen_etal16; @liu_etal15; @veronese_etal18]. Despite the numerous benefits of pulses to food and cropping systems, and their potential to address myriad challenges facing agriculture and human health, pulses suffer from low adoption and are underutilized [@magrini_etal16; @magrini_etal18].
+
+The Land Institute is developing sainfoin as a perennial pulse crop to improve the sustainability and environmental benefits of a perennial-based agriculture. Moreover, sainfoin could prove to be a sustainable protein source and nutrient dense crop with human health benefits. However, this innovation requires a thorough understanding of the chemical composition of sainfoin seeds, their nutritional quality, and potential food uses to facilitate integration into diets to sustain and improve human health. There are few published studies detailing sainfoin seed composition. For example, @tarasenko_etal15 analyzed flour milled from seeds of *Onobrychis arenaria*, an intrageneric relative of *Onobrychis viciifolia*, and found that the seeds had considerable protein (28.7%) and crude fiber content (19.4%), oil content below 8%, and a pleasant taste. @baldinger_etal16 demonstrated that sainfoin seeds could be used in organic diets of weaned piglets, and observed suitable amino acid profiles and protein content (27.9% seed and hull; 38.8% dehulled) for sainfoin seeds. @ditterline_etal77 found no significant difference in body weight gain and feed conversion ratio for rats fed soybean meal or dehulled sainfoin seeds, and reported that dehulled seed protein contain approximately 36% crude protein. 
+
+This study is part of a larger project focused on demonstrating that sainfoin seeds are safe for human consumption. In the US, the Food and Drug Administration lists foods and ingredients as generally recognized as safe (GRAS), and The Land Institute's listing of sainfoin seeds is pending. Therefore, to better understand the potential health benefits of sainfoin seeds and facilitate the adoption of sainfoin as a perennial pulse crop, this study had the following objectives: 
+
+  1) Analyze the composition of *Onobrychis viciifolia* seed samples, representing commercial seed lots
+  2) Compare the composition to both major and minor pulses and soybean, with a focus on potential human health benefits 
+  3) Infer relationships between seed components and between sainfoin seed samples
+  
+The samples analyzed represent seeds from commercial sainfoin varieties developed for forage production, grown by commercial sainfoin seed growers in the western United States. To our knowledge, these are the most common, if not the only examples of sainfoin germplasm that are in production in the US that have proven potential to consistently produce a seed crop. Thus, the seeds analyzed are the most realistic and practical example of sainfoin seeds that could be integrated into the food system. The data presented provide a baseline, to which comparisons can be made as germplasm is developed specifically for human consumption.
+
+# Materials and Methods
+## Seed Material
+Sainfoin seed samples, representing commercial seed varieties, were sourced from sainfoin seed growers in Montana, US (Table 1). 
+
+```{r, echo = F, warning=F, include=F}
+# read in GPAL data to create sample IDs 
+## from gitHub
+library(RCurl)
+gitFile.1 <- ("https://raw.githubusercontent.com/EvanCraine/perennialPulse_nutritionalQuality/main/sainfoinNutrition_GPAL_roundDown_wide_git.csv")
+GPAL_roundDown_wide <- read.csv(url(gitFile.1), check.names = F)
+
+GPAL_roundDown_wide$ID[which(GPAL_roundDown_wide$ID=="PHJ-S-16")] = "PJ-S-16"
+
+# rename table and select ID to start
+table.grower = GPAL_roundDown_wide %>%
+  select(ID)
+
+## PHJ should just be PJ
+#table.grower$ID[which(table.grower$ID=="PHJ-S-16")] = "PJ-S-16"
+# commented out 19 July and took care of in dataCleanUp 
+
+# split Customer.Sample.ID to get Grower_code, Variety_code, SiteYear
+table.grower = table.grower %>% separate(
+  ID, c('Grower Code', 'Variety_code', 'Year'), remove = F, extra = "warn")
+
+# change 
+
+## extra pieces are "-14"; 13 to 13-14 in warning
+
+# Seed Lot (formerly site year)
+table.grower = table.grower %>%
+  mutate(`Year` = case_when(`Year` == '13' ~ '2013-2014',
+                              `Year` == '16' ~ '2016',
+                              `Year` == '18' ~ '2018',
+                              `Year` == '19' ~ '2019'))
+## set NA to -
+table.grower$`Year`[is.na(table.grower$`Year`)] = "-"
+
+# Grower 
+## 8 June - I don't know the corresponding Grower names; can be updated later by filling in ""
+unique(table.grower$`Grower Code`)
+# table.grower = table.grower %>% 
+#   mutate(Grower = case_when(Grower_code == "CS" ~ "Clearwater Seeds",
+#                             Grower_code == "CF" ~ "",
+#                             Grower_code == "MG" ~ "",
+#                             Grower_code == "PJ" ~ "", 
+#                             Grower_code == "R" ~ "", 
+#                             Grower_code == "S" ~ "",
+#                             Grower_code == "W" ~ "Wentzl"))
+
+## set missing to 
+table.grower$`Grower Code`[table.grower$`Grower Code`==""] = "-"
+
+# Variety
+unique(table.grower$Variety_code)
+table.grower = table.grower %>% 
+  mutate(Variety = case_when(Variety_code == "D" ~ "Remont",
+                             Variety_code == "E" ~ "Eski",
+                             Variety_code == "M" ~ "AAC Mountainview", #note that Mountan sp vs mountain
+                             Variety_code == "R" ~ "Remont", # checked PDF and cannot tell if R in CF-R-19 corresponds to Remont or Renumex
+                             Variety_code == "Rx" ~ "Renumex",
+                             Variety_code == "S" ~ "Shoshone"))
+
+# select columns
+table.grower = table.grower %>%
+  select(ID, `Grower Code`, `Variety_code`, Variety, `Year`)
+head(table.grower)
+
+table.grower = table.grower %>%
+  dplyr::rename(`Variety Code` = `Variety_code`)
+
+# keep all samples for "more samples" data set
+length(unique(table.grower$ID))
+
+```
+
+```{r, include = T, echo = F, warning = F}
+
+flex.table.grower = flextable(table.grower) %>%
+  set_caption("Seed sample ID, grower code, variety code, variety, and year (N = 15).", autonum = T)
+
+flex.table.grower
+```
+\newpage
+## Seed Analysis
+Sainfoin seeds were removed from pods (i.e. dehulled) before component analysis, which was performed by Great Plains Analytical Laboratories (GPAL) (Kansas City, MO, US) unless otherwise noted. Thousand kernel weight was quantified according to Federal Grain Inspection Service (FGIS) protocol. Information on the methods of analysis for the components by data set are provided in Table 2. Data for sugars was not available for sainfoin samples with IDs PJ-S-13-14, PJ-S-16, CF-R-19, MG-D-19, S-D-18, MG-D-18.
+\newpage
+
+```{r, echo = F, warning=F, include=F}
+# prep for table that will display the component, and the method by data set
+
+# GPAL
+## Ash (high-temperature incineration; AACC 08-01.01)
+## Moisture (air-oven; AACC 44-15.02), 
+## Fat (ether extraction; AACC 30-25.01)
+## Protein (combustion method; nitrogen x 6.25; AACC 46-30.01)
+## Carbohydrates were calculated by difference 100 - (Ash + Moisture + Fat + Protein). 
+## Amino acid profile was determined using AOAC 982.30
+## Fatty acid profile was determined using AOAC 996.06. 
+## Individual fatty acids were quantified and used to calculate the amount of mono/omega-9, poly/omega-6, saturated, unsaturated, trans, and total fats. ## Total starch content was determined using AOAC 996.11. 
+## Total sugar content, including content of fructose, glucose, lactose, maltose, and sucrose, was determined using AACC 80-04.01. 
+## Dietary fiber content, including soluble, insoluble, and total dietary fiber, was determined using AACC 32-07.01/AOAC 991.43. 
+## Iron and Zinc content was determined using AACC 40-70.01. 
+## Folate content was determined using GPAL method 03-HPLC-FA. Thousand kernel weight was quantified by Federal Grain Inspection Service (FGIS) protocol.
+
+# USDA
+# from gitHub
+gitFile.2 <- ("https://raw.githubusercontent.com/EvanCraine/perennialPulse_nutritionalQuality/main/USDA_glycineMax_methods_git.csv")
+USDA_methods <- read.csv(url(gitFile.2), header = T, check.names = F)
+
+USDA_methods_cut <- USDA_methods %>%
+  dplyr::select(name, description) %>%
+  dplyr::filter(name %in% c(
+    'Water', 
+    'Ash',
+    'Protein',
+    'Total lipid (fat)',
+    # carbohydrates
+    # total starch,
+    'Fiber, total dietary',
+    'Iron, Fe',
+    'Zinc, Zn'
+    ))
+
+# combined tab;e
+component.table <- tibble(
+  Component = c("Moisture",
+                "Ash",
+                "Protein",
+                "Crude Fat",
+                "Carbohydrates",
+                #"Amino Acid Profile",
+                #"Fatty Acid Profile",
+                "Total Starch",
+                #"Total Sugar",
+                "Dietary Fiber",
+                "Iron",
+                "Zinc",
+                "Phytic Acid"
+                #"Folate"
+                ),
+  `FAO Pulses` = c(
+    "Gravimetric method", #Moisture
+    "Gravimetric method", #Ash
+    "Kjeldahl method (total nitrogen x 6.25)", #Protein
+    "Soxhlet method (continuous extraction)", #Fat
+    "100 - (Ash + Moisture + Fat + Protein)", #Carbohydrates
+    #"AOAC 982.30", #amino acid profile
+    #"AOAC 996.06", #fatty acid profile
+    "-", #total starch
+    #"AACC 80-04.01", #total sugar
+    "AOAC Prosky method", #dietary fiber
+    "AAS, ICP, ICP-MS, and colorimetric methods", #iron
+    "AAS, ICP, ICP-MS, and colorimetric methods", #zinc
+    "determined by direct precipitation" # Inositol hexaphosphate; IP6
+    #"mircobial assay" #folate
+  ),
+  
+  `Sainfoin` = c(
+    "AACC 44-15.02", #Moisture
+    "AACC 08-01.01", #Ash
+    "AACC 46-30.01", #Protein
+    "AACC 30-25.01 (ether extraction)", #Fat
+    "100 - (Ash + Moisture + Fat + Protein)", #Carbohydrates
+    #"AOAC 982.30", #amino acid profile
+    #"AOAC 996.06", #fatty acid profile
+    "AOAC 996.11", #total starch
+    #"AACC 80-04.01", #total sugar
+    "AACC 32-07.01/AOAC 991.43", #dietary fiber
+    "AACC 40-70.01", #iron/zinc
+    "AACC 40-70.01", #iron/zinc
+    "HPLC RI"
+    #"GPAL method 03-HPLC-FA" #folate
+     ))
+  # `Soybean` = c(
+  #   "doi.org/10.1002/0471142913.faf0203s00", #Water
+  #   "AOAC 934.06 mod", #Ash
+  #   "AOAC 922.06", #Protein
+  #   "AOAC 923.03", #Total lipid (fat)
+  #   "100 - (Ash + Moisture + Fat + Protein)", #Carbohyrates
+  #   #"", #amino acid profile
+  #   #"", #fatty acid profile
+  #   "-", # total starch
+  #   "doi.org/10.1007/s12161-010-9123-y", # total dietary fiber
+  #   "AOAC 948.22", #Iron, Fe
+  #   "AOAC 985.35" #Zinc, Ze
+  #   #"AOAC 950.46b", # Folate, DFE
+  #  )
+  #)
+
+head(component.table)
+str(component.table)
+
+component.table <- as.data.frame(component.table)
+```
+
+```{r, warning = F, include = T, echo = F}
+# tibble to flex table
+flex.table.components = flextable(component.table) %>%
+  set_caption("Components and methods of analysis by data set.", autonum = T)
+
+flex.table.components <- flextable::add_footer_lines(
+  x = flex.table.components,
+ values = c("NOTE: soybean methods could not be confidently aligned with components using information available from USDA")
+  )
+
+flex.table.components
+
+```
+\newpage
+## External Datasets
+Pulse crop nutritional quality data were downloaded from the Food and Agriculture Organization/International Network of Food Data Systems (FAO/INFOODS) Global Food Composition Database for Pulses (Version 1.0 - uPulses1.0 - 2017). Data for raw seeds was reported on an edible portion, dry matter content basis. For comparisons, data for components in common with the sainfoin data set were selected for all species in the data set, including *Cicer arietinum* (L.) (chickpea), *Lens culinaris* (Medik) (lentil), *Phaseolus vulgaris* (L.) (common bean), *Pisum sativum* (L.) (pea), *Vicia faba* (L.) (broad bean or fava bean) *Vigna radiata* (L.) R Wilczek (mung bean), *Vigna unguiculata* (L.) Walp (cowpea), *Vigna angularis* (Willd) Ohwi & H. Ohashi (Adzuki bean), *Vigna subterranea* (L.) Verdc. (Bambara groundnut), *Lablab purpureus* (L.) Sweet (Hyacinth bean), *Phaseolus lunatus* (L.) (Lima bean), *Lupinus* spp., including *L. albus*, *L. angustifolius*, *L. luteus*, *Vigna aconitifolia* (Jacq) Marechal (Moth bean), *Vigna mungo* (L) Hepper (Mungo bean), *Cajanus cajan* (L) Huth (Pigeon pea), *Vigna umbellata* (Thunb.) Ohwi & H Ohashi (Rice Bean). 
+
+Nutritional quality data for raw, mature seeds of *Glycine max* (L.) (soybean) were downloaded from by the United States Department of Agriculture (USDA) Agricultural Research Service (ARS) FoodData Central. 
+
+Data are provided in Supplementary Table S1 for the components in common among the data sets, and in Supplementary Table S2 for the components specific to the sainfoin data set. 
+
+## Statistical Analyses
+Thousand kernel weight and total starch (AOAC 996.11) data were analyzed for sainfoin (data not available for FAO pulses and soybean). Common components between the sainfoin, pulse, and soybean data sets were included in joint statistical analyses. Carbohydrate content is calculated by difference: 
+$Carbohydrates = 100 - Protein - Fat - Ash - Moisture$. All seed components were adjusted to a dry matter basis using moisture content, and values are reported on an edible portion dry matter basis (EPDM). All statistical analyses were performed using the R statistical software, unless otherwise noted [@rcoreteam22]. Summary statistics were calculated using the summarise function [@wickham_etal22]. Pearson correlation coefficients and significance values were calculated using the *rcorr* function [@harrelljr22]. Principal components analysis was performed using the *prcomp* function in base R, with data centered and scaled. A biplot of principal components was visualized using the *factoextra* package [@kassambara_mundt20]. 
+
+# Results and Discussion
+## Sainfoin thousand seed weight smaller than lentil
+```{r, echo = F, include = F, warning = F}
+# TKW table and results
+gitFile.1 <- ("https://raw.githubusercontent.com/EvanCraine/perennialPulse_nutritionalQuality/main/sainfoinNutrition_GPAL_roundDown_wide_git.csv")
+GPAL_wide <- read.csv(url(gitFile.1), check.names = F)
+
+# thousand kernel weight (TKW)
+TKW <- GPAL_wide %>%
+  select(ID, `Thousand Kernel Weight_g`)
+
+TKW_table <- TKW %>%
+  summarise(Mean = mean(`Thousand Kernel Weight_g`),
+            SD = sd(`Thousand Kernel Weight_g`),
+            Minimum = min(`Thousand Kernel Weight_g`),
+            Maximum = max(`Thousand Kernel Weight_g`)) %>%
+  round
+minTKW = round(min(GPAL_wide$`Thousand Kernel Weight_g`),1)
+maxTKW = round(max(GPAL_wide$`Thousand Kernel Weight_g`),1)
+meanTKW = round(mean(GPAL_wide$`Thousand Kernel Weight_g`),1)
+sdTKW = round(sd(GPAL_wide$`Thousand Kernel Weight_g`),1)
+```
+Sainfoin thousand seed weight (TSW) ranged from `r minTKW` g to `r maxTKW` g, with a mean value of `r meanTKW` g (standard deviation [sd] = `r sdTKW` g). TSW values vary considerably among legumes. For example, @guiguitant_etal20 reported a range in values from 12.8 ± 3.9 g (*Trigonella foenum-graecum*) to 1178 g (*Phaseolus coccineus*). Based on their study, sainfoin appears have comparable average TSW to *Astragalus sp.* (17.7 ± 18.9 g) and a lower value compared to *Vigna radiata* (39.9 ± 11.1 g). Within lentils grown in Saskatchewan, CA, @thavarajah_etal08 reported TSW values from 26 to 62 g. The minimum value corresponds to the extra small red market, a decorticated (i.e. split) form market class, while the maximum value corresponds to large green, a whole seed form market class. Sainfoin market classes, although not currently defined, are  likely to emerge and could resemble existing lentil market classes. Lentil market classes are numerous, are broadly categorized based on whether the seed is whole or split, and are further defined based on seed size and color. Variation among sainfoin germplasm for seed size, seed weight, seed coat color, and cotyledon color would have to be present to support the development of numerous market classes. 
+
+In addition to facilitating marketing of sainfoin as a novel food crop, it is critically important to understand the extent of variation in sainfoin seed composition and morphology and relationships with agronomic traits and nutrition quality. Seed weight has been shown to be a reliable predictor of grain yield [@guiguitant_etal20], and is expected to have positive correlations with plant height and reproductive effort [@chapin_etal93], as well as seedling biomass [@fayaud_etal14; @tamet_etal96]. Seed size is especially important in the context of domestication, where it has likely undergone selection along with agronomic traits such as erect growth habit, both characteristics of the highest yielding species [@guiguitant_etal20; @smartt78]. As a forage, sainfoin has numerous benefits thought to arise from the polyphenolic content of the foliage, in particular condensed tannins (CT) [@wang_etal15]. @wang_etal15 demonstrate considerable variation among sainfoin accessions for foliar CT content, and while CT content decreases as sainfoin matures, it is likely that CT, tannins, or other polyphenolics are present in the seeds or seed coats. @buyukcapar_kamalak07 found a positive correlation between seed color and CT content in legume seeds, which can have a detrimental effect on protein digestibility [@bressani_elias80]. Pulse tannin content can be significantly reduced through decortication, soaking, and/or cooking [@rao_deosthale82; @wang_etal09a]. Understanding the chemical composition and nutritional benefits of seed structures (e.g. seed coat and cotyledons) will aid in prioritization of end-uses, processing, and potentially market classes [@singh_etal17]. Targeted screening of sainfoin germplasm, such as the approximately 500 accessions in the USDA National Plant Germplasm System's *Onobrychis sp.* collection, for seed composition and morphology will aid in the development of breeding strategies for improved agronomics (e.g. seed yield) and nutrition [@caldas_blair09; @helsper_etal02]. 
+
+## Sainfoin protein content comparable to soybean
+Proximates evaluated in this study included ash, carbohydrates, fat, and crude protein content (Table 3). Sainfoin had comparable crude protein content to soybean and lupine, and these crops had mean values well above the range of mean values for pulses. The range in crude protein content we found (34.95% - 40.97% EPDM) is generally comparable, although slightly higher than the few instances reported in the literature. For dehulled seeds, which were also analyzed in this study, crude protein values were reported by @baldinger_etal16 (38.8%), @woodman_evans47 (36.6%), @ditterline_etal77 (35.6%-36.0%), and @kling1977handelsfuttermittel (30.3% DM). While the USDA data set does not provide a range for soybean values, @assefa_etal19 assessed the variation in soybean oil and protein content for major US growing regions and reported a range in protein content from 27.3 to 45.4 g kg^-1^, with 90% of the data (13,574 data points total) within a 9.0 g kg^-1^ range (i.e. 330 to 390 g kg^-1^). While the range in sainfoin protein content determined in this study is comparable to soybean and lupine, it may be possible that sainfoin protein content could exceed the protein content of these legumes. The sainfoin varieties analyzed in this study are a narrow representation of the sainfoin germplasm pool, which may harbor genetic diversity to facilitate breeding and selection for elevated protein content. Protein content could likely be increased through best-management practices for sainfoin seed production and quality, which were not necessarily utilized to produce the seeds analyzed in this study and would require development through future agronomic studies. 
+
+In addition to protein content, protein quality is an important and complex characteristic for human nutrition and can be defined in several different ways. High protein quality is generally indicated by high protein digestibility and utilization of amino acids by the body, and a well-balanced profile of essential amino acids in excess of daily requirements [@satterlee_etal79; @millward_etal08]. For these reasons, animal protein sources are generally regarded as having the highest protein quality for humans [@shams-white_etal18]. Legume protein quality is often lower than animal protein quality due to lower protein digestibility and limiting amino acid content [@harwatt19; @paivarinta_etal20; @qin_etal22; @young_pellett94]. However, legumes vary considerably with respect to nutritional quality, especially in terms of how cooking or other processing techniques increase or decrease nutritional quality on a species dependent basis [@margier_etal18; @sathe_etal84; @tyler_etal17; @walker_kochhar82; @patterson_etal17]. As mentioned earlier, tannins can lower protein digestibility, and are one example of the bioactive components in plants. Plant protein sources typically vary in the presence and concentration of bioactive components, and those that can lower protein digestibility include fibers, lectins, protease inhibitors, phytate, and trypsin inhibitors [@sa_etal20]. Future studies should focus on not only evaluating sainfoin protein content and quality, but also bioactive components that could inhibit utilization, and do so in the context of relevant processing techniques (e.g. cooking, germinating, fermentation) to fully understand the potential of sainfoin to be incorporated into diets and to sustain and improve health and nutrition. Additional plant breeding for protein quality may also lead to improved human health and nutrition outcomes for sainfoin as a pulse crop.
+
+## Sainfoin fat content comparable to chickpea
+Sainfoin had comparable crude fat content to bambara groundnut, chickpea, and lupine, and these crops had mean values above the range for pulses. In their analysis of pulse crops, @guiguitant_etal20 reported a moderate positive correlation between protein and oil content (*r* = 0.45, *P* < 0.01). In soybean, a strong negative correlation is often reported between protein and oil content, as is reported by @choi_etal21 (*r* = -0.714, *P* < 0.0001). However, @assefa_etal19 found no significant correlation within a pooled soybean dataset, even though a negative relationship was observed when evaluating each of the studies in the data base separately. In the study by @choi_etal21, they reported interesting relationships between fatty acid content-especially content of the essential fatty acid linoleic acid-and soybean seed coat color and seed weight. Along with linoleic acid, alpha-linolenic acid is also an essential fatty acid (must be consumed in the diet). Given the relatively high fat content of sainfoin compared to other pulses, sainfoin could provide significant amounts of fatty acids to benefit animal and human nutrition [@jukanti_etal12; @madurapperumage_etal21]. Therefore, the fatty acid profile of sainfoin should be further characterized in future studies. Conversely, the relatively high fat component of the seed compared to other pulses (e.g. pea) may be a challenge to producing protein concentration or isolates, as this fraction must be removed and a lower amount is ideal for producing larger quantities of the desired products [@lam_etal18]. When considering the potential to produce a protein concentration or isolate from sainfoin, future studies should also evaluate sainfoin physicochemical and functional properties to delineate how these properties may be used to determine suitability to various applications [@shevkani_etal19; @kinsella_melachouris76]. 
+\newpage
+```{r, echo = F, include = T, warning = F}
+# read in sainfoinNutrition_GPAL_FAO_USDA_DM_proxTable.csv from github
+gitFile.3 <- ("https://raw.githubusercontent.com/EvanCraine/perennialPulse_nutritionalQuality/main/sainfoinNutrition_GPAL_FAO_USDA_DM_proxTable_git.csv")
+
+# read in sainfoinNutrition_GPAL_FAO_USDA_DM_proxTable.csv from dataAnalysis
+prox.table  <- read.csv(url(gitFile.3), header = T, check.names = F)
+
+prox.table <- prox.table %>%
+  dplyr::rename(`Ash` = `Ash (g/100g EPDM)`,
+         `Carbohydrates` = `Carbohydrates, by difference (g/100g EPDM)`,
+         `Crude Fat` = `Fat, total (g/100g EPDM)`,
+         `Crude Protein` = `Protein, total (g/100g EPDM)`
+         )
+
+# add footnotes to flex table:https://davidgohel.github.io/flextable/reference/footnote.html
+
+# flex table
+flex.table.proximates = flextable(prox.table) %>%
+  set_caption("Proximates reported for pulses, sainfoin, and soybean.", autonum = T)
+
+# add footnote for data source
+## building because of positioning
+flex.table.proximates <- flextable::add_footer_lines(
+  x = flex.table.proximates,
+  values = c("Values reported as mean value ± standard deviation (minimum - maximum) on an edible portion dry matter (EPDM) basis; rows sorted by crude protein content")
+)
+
+# flex.table.proximates <- flextable::footnote(
+#   x = flex.table.proximates,
+#   i = 1, #row wise
+#   j = 1, #column wise
+#   value = as_paragraph(""),
+#   ref_symbols = ""
+# )
+
+#flex.table.proximates #remove comment to view each step
+
+
+flex.table.proximates <- flextable::footnote(
+  x = flex.table.proximates,
+  i = 1, #row wise
+  j = 1, #column wise
+  ref_symbols = "a",
+  value = as_paragraph("USDA ARS Food Data Central")
+)
+
+#flex.table.proximates #remove comment to view each step
+
+flex.table.proximates <- flextable::footnote(
+  x = flex.table.proximates,
+  i = 3:18, #row wise
+  j = 1, #column wise
+  ref_symbols = "b",
+  value = as_paragraph("FAO (2017)")
+)
+
+
+
+flex.table.proximates <- valign(flex.table.proximates, valign = "bottom", part = "header")
+
+# bold sainfoin row across columns
+flex.table.proximates <- bold(flex.table.proximates, i = 2, j = 1:6, bold = TRUE)
+
+
+flex.table.proximates <- autofit(flex.table.proximates)
+flex.table.proximates
+```
+\newpage
+## Sainfoin ash, iron, and zinc content comparable to pulses
+The mean value for sainfoin ash content fell within the pulse values, which ranged from 2.75 g/100g EPDM (pea) to 4.63 g/100g EPDM (lima bean). Soybean ash content was slightly higher, at 5.32 g/100g EPDM (Table 3). Zinc and iron are two minerals of particular interest due to their critical role in human nutrition, especially in populations (e.g. pregant women and children) vulnerable to malnutrition from deficiencies [@bruins_etal18; @marangoni_etal16; @dewey13; @beal_etal17]. Therefore, concerted efforts have been made in the last decade to improve the essential micronutrient content of cereal grains and legumes through biofortification [@kumar_pandey20; @jha_warkentin20; @qaim_etal07; @bouis_etal11]. Sainfoin mean iron content fell within the range of mean values for pulses, and was most comparable to lupine, pigeon pea, cowpea, hyacinth bean, and rice bean, followed by pea, broad bean, and chickpea. Sainfoin mean zinc content was most comparable to hyacinth bean, followed by lupine, pigeon pea, adzuki bean, and soybean, and fell above the range in values for other pulses (Table 4). Mineral content and bioactive compounds (e.g. phytic acid) should be characterized jointly, and future studies aimed at understanding the influence of sainfoin genotype, environment, management, processing and their interactions will be most informative. 
+
+
+```{r, echo =F, include = F, warning=F}
+gitFile.4 <- ("https://raw.githubusercontent.com/EvanCraine/perennialPulse_nutritionalQuality/main/sainfoinNutrition_GPAL_FAO_USDA_DM_phyticAcidRangesbyCrop_git.csv")
+rangerPhytic <- read.csv(url(gitFile.4), header = T)
+
+
+rangerPhytic <- rangerPhytic %>%
+arrange(desc(Range_Phytic))
+
+# store values 
+sainfoinPhyticRange <- round(rangerPhytic[rangerPhytic$Crop == "Sainfoin", "Range_Phytic"],2)
+LupinePhyticRange <- round(rangerPhytic[rangerPhytic$Crop == "Lupine", "Range_Phytic"],2)
+CommonBeanPhyticRange <- round(rangerPhytic[rangerPhytic$Crop == "Common Bean", "Range_Phytic"],2)
+PeaPhyticRange <- round(rangerPhytic[rangerPhytic$Crop == "Pea", "Range_Phytic"],2)
+
+# just for easy viewing
+flex.rangerPhytic <- flextable(rangerPhytic)
+flex.rangerPhytic
+
+gitFile.5 <- ("https://raw.githubusercontent.com/EvanCraine/perennialPulse_nutritionalQuality/main/sainfoinNutrition_GPAL_FAO_USDA_DM_phyticAcidbySainfoinVariety_git.csv")
+SainfoinVariety_phytic <- read.csv(url(gitFile.5), header = T)
+
+str(SainfoinVariety_phytic)
+
+meanPhytic_Delaney <- round(SainfoinVariety_phytic[SainfoinVariety_phytic$Variety == "Delaney", "Mean_Phytic"],0)
+
+meanPhytic_Eski <- round(SainfoinVariety_phytic[SainfoinVariety_phytic$Variety == "Eski", "Mean_Phytic"],0)
+
+meanPhytic_Remont <- round(SainfoinVariety_phytic[SainfoinVariety_phytic$Variety == "Remont", "Mean_Phytic"],0)
+
+meanPhytic_Renumex <- round(SainfoinVariety_phytic[SainfoinVariety_phytic$Variety == "Renumex", "Mean_Phytic"],0)
+
+meanPhytic_Shoshone<- round(SainfoinVariety_phytic[SainfoinVariety_phytic$Variety == "Shoshone", "Mean_Phytic"],0)
+
+
+
+```
+One challenge to realizing the potential of biofortication is the presence of bioactive compounds (e.g. phytic acid, tannins, fibers) in seeds that can reduce bioavailability of micronutrients [@sandberg02]. Sainfoin had a considerably higher content of phytic acid compared to the pulses, which had mean values ranging from 334 mg/100g EPDM (mung bean) to 856.62 mg/100g EPDM (dry bean) (Table 4). Moreover, we observed the largest range in phytic acid content for sainfoin (`r sainfoinPhyticRange` mg/100g sample EPDM), followed by lupine (`r LupinePhyticRange` mg/100g sample EPDM), common bean (`r CommonBeanPhyticRange` mg/100g sample EPDM), and pea (`r PeaPhyticRange` mg/100g sample EPDM) (Table 4). Within sainfoin, the variety Eski had the highest phytic acid content we observed (`r meanPhytic_Eski` mg/100g sample EPDM), followed by Shoshone (`r meanPhytic_Shoshone` mg/100g sample EPDM), Renumex (`r meanPhytic_Renumex` mg/100g sample EPDM), Remont (`r meanPhytic_Remont` mg/100g sample EPDM), and Delaney (`r meanPhytic_Delaney` mg/100g sample EPDM) (data not shown). A wide range in variability for phytic acid has been shown for common bean @akond_etal11, as well as for chickpea, common beans, broad bean, lentil, and pea [@shi_etal18]. According to data reported by @chitra_etal95, sainfoin appears to have lower phytic acid content than soybean (3640 mg/100g), and they also reported values for mung bean (1200 g/100g) and chickpea (960 mg/100g). They also identified certain genotypes with low phytic acid within chickpea, pigeon pea, urd bean, mung bean, and soybean germplasm [@chitra_etal95]. While we did not have sufficient replication to robustly test differences among the sainfoin varieties, furture studies will be conducted with this goal in mind to better understand how genetic diversity could be used to manage phytic acid content in sainfoin. Possible risks of bioactive components in legume seeds may be overcome through germplasm evaluation and selection and adequate processing techniques [@antoine_etal22; @yadav_etal19; @singh_etal17a]. For example, soaking is a traditional and key step in preparation of pulses, and has been shown to reduce phytic acid content, in addition to tannins and total phenolic content, with total reduction depending on the pulse type and soaking conditions [@patterson_etal17; @hall_etal17; @tyler_etal17]. While decortication of pulses is also common, as it increases cooking time and sensory qualities and reduces tannin content, it has been shown to significantly increase phytate content in lentils [@wang_etal09a] due to phytic acid being primarily located in the cotyledons [@beal_mehta85]. However, @thavarajah_etal09 claim that decortication before cooking reduced total phytic acid content by more than 50%. Specifically, they saw a 99% reduction of phytic acid in Pardina lentils after cooking and more than 50% reduction in the three other lentil genotypes studied. Differences in phytic acid content between the studies may be due to the use of different methods for the determination of phytic acid (e.g. calorimetric versus high-performance anion exchange separation and conductivity). It is more likely that cooking caused the major differences seen, as cooking has been shown to significantly decrease both phytic acid and tannins in pulses [@beal_mehta85; @khalil_mansour95; @wang_etal08; @wang_etal09a]. Iron bioavailability can be improved via fermentation and germination, in addition to other methods that increase the activity of phytase enzymes that hydrolyze phytic acid [@cook05; @jha_warkentin20]. While two main concerns of phytic acid are the negative impact on mineral bioavailability and inhibition of proteases reducing protein degradation and subsequently digestion, the beneficial role of phytic acid in human nutrition (e.g. antioxidant, antidiabetic, antibacterial) has been overshadowed by these concerns. Furthermore, micronutrient bioavailability has been oversimplified by relying solely on estimates using phytic acid [@kumar_etal21; @lopez_etal02]. Nevertheless, several strategies exist for managing phytic acid at reasonable levels in other pulses, and these studies will be required to develop recommendations for and quantify the extent of phytic acid reduction possible for sainfoin. 
+
+## Comparisons of sainfoin carbohydrates and carbohydrate components 
+```{r, echo =F, include = F, warning=F}
+GPAL_sugarStarch <- GPAL_wide %>% select(ID, `Total Starch_%`, `Sugar, Total_g`, Fructose_g, Glucose_g, Lactose_g, Maltose_g, Sucrose_g)
+
+# which samples do we have sugar data for?
+## (we have total starch for all sainfoin samples)
+
+sugarSamples<-subset(GPAL_sugarStarch, (!is.na(GPAL_sugarStarch$`Sugar, Total_g`)))
+sugarSamples_IDs <- sugarSamples$ID
+
+missing_sugarSamples<-subset(GPAL_sugarStarch, (is.na(GPAL_sugarStarch$`Sugar, Total_g`)))
+missing_sugarSamples_IDs <- missing_sugarSamples$ID
+missing_sugarSamples_IDs 
+
+# total starch
+totalStarch <- GPAL_wide %>%
+  select(ID, `Total Starch_%`)
+
+totalStarch_table <- totalStarch %>%
+  dplyr::summarise(Mean = mean(`Total Starch_%`),
+            SD = sd(`Total Starch_%`),
+            Minimum = min(`Total Starch_%`),
+            Maximum = max(`Total Starch_%`)) %>%
+  round
+minTotalStarch= round(min(GPAL_wide$`Total Starch_%`, na.rm = T),1)
+maxTotalStarch = round(max(GPAL_wide$`Total Starch_%`, na.rm = T),1)
+meanTotalStarch = round(mean(GPAL_wide$`Total Starch_%`, na.rm = T),1)
+sdTotalStarch = round(sd(GPAL_wide$`Total Starch_%`, na.rm = T),1)
+
+# sugars
+## total sugar
+minTotalSugar= round(min(GPAL_wide$`Sugar, Total_g`, na.rm = T),1)
+maxTotalSugar = round(max(GPAL_wide$`Sugar, Total_g`, na.rm = T),1)
+meanTotalSugar = round(mean(GPAL_wide$`Sugar, Total_g`, na.rm = T),1)
+sdTotalSugar = round(sd(GPAL_wide$`Sugar, Total_g`, na.rm = T),1)
+
+## Fructose
+minFructose= round(min(GPAL_wide$`Fructose_g`, na.rm = T),1)
+maxFructose = round(max(GPAL_wide$`Fructose_g`, na.rm = T),1)
+meanFructose = round(mean(GPAL_wide$`Fructose_g`, na.rm = T),1)
+sdFructose = round(sd(GPAL_wide$`Fructose_g`, na.rm = T),1)
+
+## glucose
+minGlucose= round(min(GPAL_wide$`Glucose_g`, na.rm = T),1)
+maxGlucose = round(max(GPAL_wide$`Glucose_g`, na.rm = T),1)
+meanGlucose = round(mean(GPAL_wide$`Glucose_g`, na.rm = T),1)
+sdGlucose = round(sd(GPAL_wide$`Glucose_g`, na.rm = T),1)
+
+## lactose
+### below detection limit = < 0.1
+
+## maltose
+### below detection limit = < 0.1
+
+## sucrose
+minSucrose= round(min(GPAL_wide$`Sucrose_g`, na.rm = T),1)
+maxSucrose = round(max(GPAL_wide$`Sucrose_g`, na.rm = T),1)
+meanSucrose = round(mean(GPAL_wide$`Sucrose_g`, na.rm = T),1)
+sdSucrose = round(sd(GPAL_wide$`Sucrose_g`, na.rm = T),1)
+
+
+# Dietary Fiber
+## Total dietary fiber (IDF)
+minTDF= round(min(GPAL_wide$`Total Dietary Fiber_%`, na.rm = T),1)
+maxTDF = round(max(GPAL_wide$`Total Dietary Fiber_%`, na.rm = T),1)
+meanTDF = round(mean(GPAL_wide$`Total Dietary Fiber_%`, na.rm = T),1)
+sdTDF = round(sd(GPAL_wide$`Total Dietary Fiber_%`, na.rm = T),1)
+
+## insoluble dietary fiber (IDF)
+minIDF= round(min(GPAL_wide$`Fiber, Insoluble_%`, na.rm = T),1)
+maxIDF = round(max(GPAL_wide$`Fiber, Insoluble_%`, na.rm = T),1)
+meanIDF = round(mean(GPAL_wide$`Fiber, Insoluble_%`, na.rm = T),1)
+sdIDF = round(sd(GPAL_wide$`Fiber, Insoluble_%`, na.rm = T),1)
+
+## Soluble dietary fiber (IDF)
+minSDF= round(min(GPAL_wide$`Fiber, Soluble_%`, na.rm = T),1)
+maxSDF = round(max(GPAL_wide$`Fiber, Soluble_%`, na.rm = T),1)
+meanSDF = round(mean(GPAL_wide$`Fiber, Soluble_%`, na.rm = T),1)
+sdSDF = round(sd(GPAL_wide$`Fiber, Soluble_%`, na.rm = T),1)
+```
+Sainfoin, lupine, and soybean carbohydrate content fell below the range of mean values for the pulses, which ranged from 66.84 g/100g EPDM (broad bean) to 73.69 g/100g EPDM (rice bean). As with the other proximates, the composition of the carbohydrate fraction is important to consider and more informative than the content alone. Total carbohydrates can be monosaccharides (ribose, glucose, galactose, and fructose), disaccharides (sucrose and maltose), oligosaccharides (mostly α-galactosides) and other polysaccharides, starch (including total starch, amylose, and amylopectin content), dietary fiber (including total, soluble and insoluble fiber), and resistant starch [@cotacallapa-sucapuca_etal21; @hall_etal17]. We found sainfoin total starch content to range from `r minTotalStarch` to `r maxTotalStarch` g/100g EPDM with a mean value of `r meanTotalStarch` (sd = `r sdTotalStarch`), and total sugar content to range from `r minTotalSugar` to `r maxTotalSugar` g/100g EPDM with  mean value of `r meanTotalSugar` (sd = `r sdTotalSugar`). Of the sugars, sucrose had the highest mean value (`r meanSucrose` g/100g EPDM; sd = `r sdSucrose`), followed by fructose (`r meanFructose` g/100g EPDM; sd = `r sdFructose`) and glucose (`r meanGlucose` g/100g EPDM; sd = `r sdGlucose`). Lactose and maltose values fell below the detection limit (<0.1 g/100g sample) (data not shown). Compared to data reported in a review by @hall_etal17, the range we observed for total sugar content is comparable to most pulses, and the range in total starch is considerably lower than most pulses (lentil: 37-59%; peas: 30-49%; common bean: 18-45%; chickpea: 30-56%) and is most similar to lupine (1-9%). While low starch content may hinder the inclusion of sainfoin in extruded products, which traditionally rely on starch raw materials to produce highly consumed food products such as breakfast cereals and snacks [@cotacallapa-sucapuca_etal21; @vandersman_broeze13], it may contribute to a lower glycemic index for sainfoin compared to other pulses. To better understand sainfoin's potential in this context, studies quantifying the amylose to amylopectin ratio and resistant starch concentration will be required.  
+
+Increasing interest in gut health is drawing attention to the important historical and contemporary role of legumes in providing exceptional nutritional quality to maintain and improve human health @clemente_olias17. A growing body of evidence supports the contributions of pulses to preventing and treating chronic diseases, such as type-II diabetes, heart-disease, obesity, numerous cancers, and inflammatory disorders via bioactive components [@didinger_etal22; @jenkins_etal12; @polak_etal15; @rebello_etal14]. Among these bioactive components, carbohydrates and proteins resistant to digestion in particular might exert beneficial health impacts via gut health [@clemente_olias17; @hall_etal17; @zinocker_lindseth18]. In 1976, @trowell76 presented the hypothesis that dietary fiber was associated with human health benefits based on the research of @burkitt_etal72. The influence of dietary fiber on physiological effects that are linked to reduced risk for several chronic diseases has been extensively documented [@cho_etal13; @park_etal11; @reynolds_etal19]. Sainfoin dietary fiber is comprised of mostly of insoluble fiber (`r meanIDF` g/100g EPDM; sd = `r sdIDF`), compared to soluble fiber (`r meanSDF` g/100g EPDM; sd = `r sdSDF`). We found a mean value for sainfoin total dietary fiber (TDF) content well above the range of mean values for pulses (Table 4), with lupine having the most similar content. If these results are corroborated by additional studies, which should be conducted, sainfoin, may have higher dietary fiber content than any other pulse crop. TDF in pulses varies between 3–30%, and is influenced by factors such as genotype, environment, management, seed maturation, processing conditions, and their interactions [@cotacallapa-sucapuca_etal21; @hall_etal17]. It is important to note that decortication  of pulses reduces total dietary fiber in general, primarily through the reduction in insoluble dietary fiber located in the seed coat, and that total reduction varies by pulse [@hall_etal17]. For example, @mubarak05 reported a reduction in TDF of 11% for mung bean, while @sudha_etal95 reported a reduction of 62% for horse gram. Given these trends, it is likely that sainfoin TDF content will be reduced following decortication, and the extent of any reduction will need to be quantified. Uses and benefits of sainfoin seed coats, where the majority of dietary fiber may be located, could be similar to those shown for lupine [@malekipoor_etal22; @zhong_etal20]. 
+
+Dietary fiber has been identified as a "nutrient of concern" in the United States since 2005 [@mcguire11; @quagliani_felt-gunderson16]. The prevalent "fiber gap" in the United States has been well documented [@jones14; @mobley_etal14; @quagliani_felt-gunderson16], where more than 90% of women and 97% of men do not meet recommended intakes for dietary fiber by a shortfall of approximately 50% [@thompson21]. In the same populations where the fiber gap exists, epidemic levels of obesity and comorbidities have been observed [@committeeonacceleratingprogressinobesityprevention_etal12] and 74% of Americans have overweight or obesity [@u_s_departmentofagriculture_nationalinstitutesofhealth]. Pulses are a valuable source of dietary fiber, containing two to three times more fiber per 100 g than other dietary staples [@chen_etal16], and present a compelling opportunity to serve a fundamental role in closing the fiber gap in the United States [@chen_etal16; @didinger_thompson; @didinger_thompson21; @mitchell_etal09; @thompson21]. Despite the nutritional value of pulses, it has been observed that less than 8% of Americans consume pulses on any given day [@mitchell_etal09; @mitchell_etal21]. In both the U.S. and Canada, those that do consume pulses exceed daily dietary fiber requirements [@mitchell_etal21; @mudryj_etal12]. Moreover, their intake is likely underestimated, because the nutrient databases used were formed before a more accurate method of analysis for dietary fiber (AOAC 2011.25) was developed [@chen_etal16]. A novel pulse crop such as sainfoin could provide a higher fiber option compared to other pulse crops, and could increase the feasibility of meeting or exceeding recommended intake, while providing higher amount of proteins as a perennial plant protein source. 
+\newpage
+```{r, echo = F, include = T, warning = F}
+# read in sainfoinNutrition_GPAL_FAO_USDA_DM_proxTable.csv from gitHub
+gitFile.6 <- ("https://raw.githubusercontent.com/EvanCraine/perennialPulse_nutritionalQuality/main/sainfoinNutrition_GPAL_FAO_USDA_DM_dFiberFeZnPhyticTable_git.csv")
+suppTable <- read.csv(url(gitFile.6), header = T, check.names = F)
+
+suppTable <- suppTable %>%
+  dplyr::rename(`Total Dietary Fiber (g/100g)` = `Dietary fiber, total (g/100g EPDM)`,
+                `Iron (ppm)` = `Iron (ppm EPDM)`,
+                `Zinc (ppm)` = `Zinc (ppm EPDM)`,
+                `Phytic acid (IP6) (mg/100g)` = `Phytic acid (IP6) (mg/100g EPDM)`)
+
+# add footnotes to flex table:https://davidgohel.github.io/flextable/reference/footnote.html
+
+# flex table
+flex.table.suppTable = flextable(suppTable) %>%
+  set_caption("Total dietary fiber, iron, and zinc content reported for pulses, sainfoin, and soybean. Phytic acid content reported for pulses and sainfoin.", autonum = T)
+
+# add footnote for data source
+## building because of positioning
+flex.table.suppTable <- flextable::add_footer_lines(
+  x = flex.table.suppTable,
+  values = c("Values reported as mean value ± standard deviation (minimum - maximum), on an edible portion dry matter (EPDM) basis; rows sorted by total dietary fiber content; N = 6 for sainfoin phytic acid content; IP6 = inositol hexaphosphate."),
+)
+
+#flex.table.proximates #remove comment to view each step
+
+flex.table.suppTable <- flextable::footnote(
+  x = flex.table.suppTable,
+  i = 2:17, #row wise
+  j = 1, #column wise
+  ref_symbols = "a",
+  value = as_paragraph("FAO (2017)")
+)
+
+#flex.table.proximates #remove comment to view each step
+
+flex.table.suppTable <- flextable::footnote(
+  x = flex.table.suppTable,
+  i = 18, #row wise
+  j = 1, #column wise
+  ref_symbols = "b",
+  value = as_paragraph("USDA ARS Food Data Central")
+)
+
+flex.table.suppTable <- valign(flex.table.suppTable, valign = "bottom", part = "header")
+
+# bold sainfoin row across columns
+flex.table.suppTable <- bold(flex.table.suppTable, i = 1, j = 1:6, bold = TRUE)
+
+flex.table.suppTable <- autofit(flex.table.suppTable)
+flex.table.suppTable
+```
+\newpage
+## Correlation between sainfoin seed components
+We define weak, moderate, and strong correlations based on correlation coefficients values between 0.00 and 0.39, 0.40 and 0.69, and 0.70 and 1.0, respectively. No significant correlations were found between sainfoin thousand seed weight and seed components (Table 5). This may have occurred due to narrow genetic diversity and a relatively small number of samples used in this study. In a study of 22 lentil genotypes grown in Saskatchewan, Canada, @tahir_etal11 reported significant correlations (*P* < 0.05) between seed weight and starch content (*r* = 0.6) and between seed weight and protein content (*r* = -0.3). In a study of desi and kabuli chickpeas also grown in Canada, @frimpong_etal09 reported the presence of significant correlations that varied across the two types. For example, seed weight had a positive correlation with starch in kabuli (*r* = 0.16, *P* < 0.05), and was not significant in desi. 
+
+Moderate and strong negative correlations existed between protein content and ash, carbohydrates, fat, iron, and zinc, as well as between carbohydrates and total dietary fiber. @tahir_etal11 reported a significant negative correlation between starch and protein (*r* = -0.5). Fat had a moderate positive correlation with carbohydrates and zinc, and a strong positive correlation with iron. Carbohydrates had a moderate and strong positive correlation with zinc and iron, respectively. Iron and zinc had a strong positive correlation. No significant correlations were found between total starch and the other seed components (Table 5). 
+
+@frimpong_etal09 reported negative correlations between starch and protein concentrations in desi (r = −0.16, P = 0.05) and kabuli (r = −0.25, P = 0.01) chickpea varieties. Across types and environments, @frimpong_etal09 found significant correlations between seed yield and protein (*r* = -0.19, *P* < 0.01) and starch (*r* = 0.16, *P* < 0.01). They did not find a significant correlation between seed weight and seed yield. In the context of soybean, @assefa_etal19 make the distinction that protein and oil concentration are relative measures, and when combined with seed yield an absolute measure in the form of protein or oil yield is achieved. It will be most useful to quantify sainfoin seed components along with seed yield, to produce measures of component yields (e.g. protein yield and oil yield) that could support a breeding strategy to improve seed yield while simultaneously improving nutritional quality.
+\newpage
+```{r, echo = F, include = T, warning = F}
+# read in output from gitHub
+
+gitFile.7 <- ("https://raw.githubusercontent.com/EvanCraine/perennialPulse_nutritionalQuality/main/sainfoinNutrition_CorrTraits_matrix_git.csv")
+sainfoinCorr <- read.csv(url(gitFile.7), header = T, check.names = T)
+
+# clean up 
+## set rownames using column (X)
+rownames(sainfoinCorr) <- sainfoinCorr$X
+
+## rename column names to match rownames (removes ".")
+### create vector with spacer before rownames; flex.table doesn't like blank column names
+x <-  c(" ",rownames(sainfoinCorr))
+colnames(sainfoinCorr) <- x
+
+# create flex table
+sainfoinCorr.flexTable <- flextable(sainfoinCorr) %>%
+  set_caption("Pearson correlation coefficients between sainfoin seed components.", autonum = T)
+
+# add footnote for data source
+sainfoinCorr.flexTable <- flextable::add_footer_lines(
+  x = sainfoinCorr.flexTable,
+  values = as_paragraph("TDF = total dietary fiber; TSW = thousand seed weight")
+)
+
+sainfoinCorr.flexTable <- flextable::add_footer_lines(
+  x = sainfoinCorr.flexTable,
+   values = c("p < .001 '***'; p < .01 '**'; p < .05 '*'")
+)
+
+sainfoinCorr.flexTable
+
+```
+\newpage
+## Principal component analysis - sainfoin components
+```{r, echo = F, include = F, warning = F}
+# review PCA results from data analysis for reference
+# review CV calculation in data analysis
+CV <- read.csv("~/Dropbox/TLI_postDoc/sainfoinNutrition/results/sainfoin_CV_PCAvariables.csv", header = T)
+gitFile.8 <- ("https://raw.githubusercontent.com/EvanCraine/perennialPulse_nutritionalQuality/main/sainfoin_CV_PCAvariables_git.csv")
+
+CV <- read.csv(url(gitFile.8), header = T)
+CV
+```
+Principal component (PC) analysis of the variables included in the correlation analysis revealed that PC1 and PC2 explained 66.5% of the total variance (Figure 1). For each PC, variables that had contributions greater than the threshold value (11.11%; expected value if the contributions were uniform across variables) are reported in decreasing order. For PC1, carbohydrates, protein, iron, zinc, ash, and fat had contributions greater than the threshold.  For PC2, total starch and TSW had contributions greater than the threshold. This result is supported in part by coefficient of variation (CV) values being largest for Zinc (11.5%) and Iron (11.1%), followed by total starch (9.6%) and thousand seed weight (7.9%), with CV values being smallest for TDF (4.7%), protein (4.0%), and carbohydrates (3.5%) (data not shown). Along the axis for PC1, samples in the positive direction (e.g. R-S-18, R-D-18, S-D-18, and R-R-18) are primarily differentiated by higher protein content compared to samples in the negative direction (CS-E and W-M) that have higher carbohydrate, iron, zinc ash, and fat content. Along the axis for PC1, samples are primarily differentiated by TSW and starch content, with those in the positive direction having higher values (e.g. CF-R-19 and MG-D-18). Using PCA to investigate pulse crop functional diversity, @guiguitant_etal20 reported PC1 (33% of total variance) associations with morphological traits (e.g. leaf traits) and to a lesser extent with seed diameter and weight, while PC2 (15% of total variance) had strong associations with seed traits such as TSW, seed diameter, and seed oil and protein content. Even with the samples in this study representing a narrow base of possible sainfoin genotypes, environments, and production methods, our results indicate that seed components, in particular carbohydrates and protein, as well as TSW and starch, could drive variation among sainfoin samples.
+
+Given the opportunistic sample of sainfoin seeds, representing different years, growers, and varieties, cautious inferences can be made regarding possible relationships and factors that influence the variation observed.  A grouping of Remont (D) samples from three different growers in the direction of TSW and TDF could indicate that these varieties may be stable for these traits, despite possible differences in production and environment. A grouping of Rocky Mountain Remont (R) samples in the direction of protein content could indicate that this variety may have high protein content potential. However, one Rocky Mountain Remont sample by grower CF is located in the direction of high TSW and starch content, which could indicate possible genotype-by-environment interactions with respect to these traits. Furthermore, several Shoshone (S) samples are located in the direction of higher protein content, while one sample from grower CS is in the direction of higher carbohydrates and ash could also indicate the possibility of genotype-by-environment interactions. The tight grouping of Shoshone samples from grower PJ could indicate consistent production across years for this variety and this grower. In the direction of high zinc, iron, and fat content, three separate varieties, which do not occur elsewhere on the biplot due to a lack of replication, could provide an indication of distinctive mineral and fat content compared to the other varieties. Again, several caveats restrict the strength of these possible relationships. Therefore, a larger multi-genotype, multi-year, and multi-environmental sainfoin seed trait evaluation will address a set of longstanding questions and will be an interesting future venue in sainfoin nutritional phenomics. 
+```{r, echo = F, warning = F, fig.cap = "Figure 1. Biplot of principal component (PC) 1 and 2 from PC analysis of sainfoin thousand seed weight (TSW) and seed components. Variables are represented by arrows and individual samples are represented by filled circles, accompanied by sample identities. TDF = total dietary fiber", out.width="100%"}
+knitr::include_graphics("https://github.com/EvanCraine/perennialPulse_nutritionalQuality/blob/main/PCA_sainfoinComponents_biplot_18Nov22_git.pdf")
+```
+
+# Conclusion
+Sainfoin is a potential novel perennial pulse crop under domestication and development at The Land Institute in collaboration with global partners. This study evaluated the nutritional quality of sainfoin seeds, which were opportunistically sampled from commercial seed lots in Montana and Idaho, US. All values are reported as g per 100g sample, edible portion dry matter (EPDM), unless otherwise noted. We found crude protein content (mean = 38.78; sd = 1.78) to be comparable to soybean and lupine, and higher than other pulses. Fat content (mean = 6.96; sd = 0.47) was comparable to chickpea and lupine. Ash (mean = 3.81; sd = 0.23) and iron (64.14 ppm EPDM; sd = 6.38 ppm EPDM) content fell within the range for pulses, while zinc content (mean = 61.63 ppm EPDM; sd = 7.25 ppm EPDM) was above the range for pulses. Phytic acid content was considerable higher than pulses (mean = 1790.89 mg/100g EPDM; sd = 319.87 mg/100g EPDM), although common processing techniques may reduce phytic acid content to reasonable levels. Sainfoin had considerably higher dietary fiber content (mean = 48.96; sd = 2.91), which may indicate the potential for sainfoin to help pulse consumers meet or exceed dietary requirements to close the "fiber gap". We infer relationships within and among the components and samples using correlation and principal component analysis. Further investigation should corroborate these results and investigate additional seed components using seed samples from a wider genetic diversity and range in environments. Future studies should also investigate how common legume processing techniques, such as decortication, soaking, and cooking, may influence sainfoin nutritional quality. 
+
+# Acknowledgments
+We thank Shawn and Allison Wentzel, Clearwater Seeds, and Rollie and Jennifer Schlepp of Montana Seeds for graciously supplying sainfoin seeds for analysis. We thank Great Plains Analytical Laboratories for analysis of seed samples. Members of the Legume Program at The Land Institute contributed to seed sample preparation. Funding was provided by The Perennial Agriculture Project, a join initiative with The Land Institute. 
+
+# Declarations
+# Author Contributions
+Conceptualization: B. Schlautman, E. Craine, T. Peters, S. Barriball; Methodology: B. Schlautman, E. Craine; B. Schlautman, E. Craine; Writing - original draft preparation: E. Craine; Writing - review and editing: E. Craine, M. Şakiroğlu, T. Peters, S. Barriball, B. Schlautman; Funding acquisition: B. Schlautman, T. Peters; Resources: B. Schlautman, S. Barriball; Supervision: B. Schlautman.
+
+## Consent for publication 
+All authors agreed with the content and all gave explicit consent to submit.
+
+## Funding
+This work was supported by the Perennial Agriculture Project, a joint venture between the Malone Family Foundation and The Land Institute. Data is available upon request. 
+
+## Competing Interests
+All authors certify that they have no affiliations with or involvement in any organization or entity with any financial interest or non-financial interest in the subject matter or materials discussed in this manuscript. 
+
+## Data availability
+Data is available upon request and will be made publicly available upon publication in a dedicated open-access repository on GitHub.
+
+## Code availability
+Code is available upon request and will be made publicly available upon publication in a dedicated open-access repository on GitHub. 
+
+## Ethical Approval 
+This declaration is not applicable.
+
+## Consent to participate
+This declaration is not applicable.
+
+
+
+# References
